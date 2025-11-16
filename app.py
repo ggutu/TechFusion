@@ -6,16 +6,22 @@ import os
 
 load_dotenv()
 
-# load config.py into environment variables
-import config
+# Read database and Redis config from environment
+MYSQL_HOST = os.getenv('MYSQL_HOST')
+MYSQL_USER = os.getenv('MYSQL_USER')
+MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD')
+MYSQL_DB = os.getenv('MYSQL_DB')
 
-os.environ['MYSQL_HOST'] = config.MYSQL_HOST
-os.environ['MYSQL_USER'] = config.MYSQL_USER
-os.environ['MYSQL_PASSWORD'] = config.MYSQL_PASSWORD
-os.environ['MYSQL_DB'] = config.MYSQL_DB
-os.environ['REDIS_HOST'] = config.REDIS_HOST
-os.environ['REDIS_PORT'] = str(config.REDIS_PORT)
-os.environ['SECRET_KEY'] = config.SECRET_KEY
+# load config.py into environment variables
+# import config
+
+# # os.environ['MYSQL_HOST'] = config.MYSQL_HOST
+# # os.environ['MYSQL_USER'] = config.MYSQL_USER
+# # os.environ['MYSQL_PASSWORD'] = config.MYSQL_PASSWORD
+# # os.environ['MYSQL_DB'] = config.MYSQL_DB
+# # os.environ['REDIS_HOST'] = config.REDIS_HOST
+# # os.environ['REDIS_PORT'] = str(config.REDIS_PORT)
+# # os.environ['SECRET_KEY'] = config.SECRET_KEY
 
 app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY')
